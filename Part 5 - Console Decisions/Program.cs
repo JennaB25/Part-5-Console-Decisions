@@ -12,11 +12,17 @@ namespace Part_5___Console_Decisions
             Console.WriteLine("2: Parking Garage Cost");
             Console.WriteLine("3: Hurricane");
             string input = Console.ReadLine();
-            int one = 1;
+            int one;
+            int two;
             if (Int32.TryParse(input, out one))       
             {
                 Console.Clear();
                 bankingMachine();
+            }
+            else if (Int32.TryParse(input, out two))
+            {
+                Console.Clear();
+                parkingGarage();
             }
             else
             {
@@ -48,8 +54,15 @@ namespace Part_5___Console_Decisions
                 Console.WriteLine("Enter the amount you wish to withdrawal:");
                 string amount = Console.ReadLine();
                 amount = amount.Replace("$", "");
-                int _amount = Convert.ToInt32(amount);
-                Console.WriteLine($"Remaining Balance in Account: ${balance - _amount}");
+                int _amount = Convert.ToInt32(amount);               
+                if (_amount >= balance)
+                {
+                    Console.WriteLine("Error: Insufficent Funds");
+                }
+                else
+                {
+                    Console.WriteLine($"Remaining Balance in Account: ${balance - _amount}");
+                }
             }
             else if (inputTwo == billPayment)
             {
@@ -57,7 +70,14 @@ namespace Part_5___Console_Decisions
                 string amount = Console.ReadLine();
                 amount = amount.Replace("$", "");
                 int _amount = Convert.ToInt32(amount);
-                //Console.WriteLine($"Remaining Balance in Account: ${balance - _amount}");
+                if (_amount >= balance)
+                {
+                    Console.WriteLine("Error: Insufficent Funds");
+                }
+                else
+                {
+                    Console.WriteLine($"Remaining Balance in Account: ${balance - _amount}");
+                }
             }
             else if (inputTwo == balanceUpdate)
             {
@@ -74,6 +94,9 @@ namespace Part_5___Console_Decisions
 
 
         }
-        
+        public static void parkingGarage()
+        {
+            Console.WriteLine("Enter the number of minutes your car was parked for:");
+        }
     }
 }
