@@ -12,8 +12,9 @@ namespace Part_5___Console_Decisions
             Console.WriteLine("2: Parking Garage Cost");
             Console.WriteLine("3: Hurricane");
             string input = Console.ReadLine();
-            int one;
-            int two;
+            int one = 1;
+            int two = 2;
+            int three = 3;
             if (Int32.TryParse(input, out one))       
             {
                 Console.Clear();
@@ -23,6 +24,11 @@ namespace Part_5___Console_Decisions
             {
                 Console.Clear();
                 parkingGarage();
+            }
+            else if (Int32.TryParse(input, out three))
+            {
+                Console.Clear();
+                hurricane();
             }
             else
             {
@@ -92,11 +98,46 @@ namespace Part_5___Console_Decisions
                 Console.WriteLine("Error: Run Program Again.");
             }
 
-
         }
         public static void parkingGarage()
         {
-            Console.WriteLine("Enter the number of minutes your car was parked for:");
+            Console.WriteLine("Enter the number of minutes your car was parked for:");           
+            double amount;
+            double hours;
+            string minutes = Console.ReadLine();
+            minutes = minutes.Replace("mins", "");           
+            double _minutes = Convert.ToDouble(minutes);
+            hours = _minutes / 60;
+            if (_minutes <= 60)
+            {                                       
+                hours = Math.Ceiling(hours);
+                amount = 4.00;
+                Console.WriteLine($"You stayed for {hours}hrs and your fee is ${amount}");
+            }
+            else if (_minutes >= 60)
+            {               
+                hours = Math.Ceiling(hours);
+                amount = ((hours - 1) * 2.00) + 4.00;                                          
+                if (amount >= 20.00)
+                {
+                    Console.WriteLine("Max fee reached");
+                    Console.WriteLine($"You stayed for {hours}hrs and your fee is ${20}");
+                }
+                else
+                {
+                    Console.WriteLine($"You stayed for {hours}hrs and your fee is ${amount}");
+                }
+                
+            }          
+            else
+            {
+                Console.WriteLine("Error: Run Program Again.");
+            }
+            
         }
-    }
+        public static void hurricane()
+        {
+            //
+        }
+    }   
 }
