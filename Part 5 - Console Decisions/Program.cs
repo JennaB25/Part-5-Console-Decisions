@@ -100,10 +100,10 @@ namespace Part_5___Console_Decisions
 
         }
         public static void parkingGarage()
-        {
-            Console.WriteLine("Enter the number of minutes your car was parked for:");           
+        {                     
             double amount;
             double hours;
+            Console.WriteLine("Enter the number of minutes your car was parked for:");
             string minutes = Console.ReadLine();
             minutes = minutes.Replace("mins", "");           
             double _minutes = Convert.ToDouble(minutes);
