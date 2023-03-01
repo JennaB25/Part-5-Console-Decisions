@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Part_5___Console_Decisions
@@ -11,29 +12,26 @@ namespace Part_5___Console_Decisions
             Console.WriteLine("1: Simple Banking Machine");
             Console.WriteLine("2: Parking Garage Cost");
             Console.WriteLine("3: Hurricane");
-            string input = Console.ReadLine();
-            int one = 1;
-            int two = 2;
-            int three = 3;
-            if (Int32.TryParse(input, out one))       
+            int input = Convert.ToInt32(Console.ReadLine());
+            switch (input)
             {
-                Console.Clear();
-                bankingMachine();
+                case 1:
+                    Console.Clear();
+                    bankingMachine();
+                    break;
+                case 2:
+                    Console.Clear();
+                    parkingGarage();
+                    break;
+                case 3:
+                    Console.Clear();
+                    hurricane();
+                    break;
+                default:
+                    Console.WriteLine("Error: Run Program Again");
+                break;
             }
-            else if (Int32.TryParse(input, out two))
-            {
-                Console.Clear();
-                parkingGarage();
-            }
-            else if (Int32.TryParse(input, out three))
-            {
-                Console.Clear();
-                hurricane();
-            }
-            else
-            {
-                Console.WriteLine("Error: Run Program Again");
-            }
+                                                         
         }
         public static void bankingMachine()
         {
@@ -137,7 +135,30 @@ namespace Part_5___Console_Decisions
         }
         public static void hurricane()
         {
-            //
+            int hurricaneLevel;
+            Console.WriteLine("Enter a hurricane cattegory from 1 to 5 to get the wind speeds:");
+            //hurricaneLevel = Convert.ToInt32(Console.ReadLine());         
+            switch (hurricaneLevel)
+            {
+                case 1:
+                   Console.WriteLine("74-95mph or 64-82kt or 119-153km/hr");
+                    break;
+                case 2:
+                    Console.WriteLine("96-110mph or 83-95kt or 154-177km/hr");
+                    break;
+                case 3:
+                    Console.WriteLine("111-130mph or 83-95kt or 178-209km/hr");
+                    break;
+                case 4:
+                    Console.WriteLine("131-155mph or 114-135kt or 210-249km/hr");
+                    break;
+                case 5:
+                    Console.WriteLine("Greater than 155 mph or 135kt or 249km/hr");
+                    break;
+                default:
+                    Console.WriteLine("Error: Run Program Again");
+                    break;
+            }
         }
     }   
 }
